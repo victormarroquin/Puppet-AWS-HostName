@@ -33,9 +33,9 @@ class hosts {
       ip     => 'ff00::0',
       target => '/etc/hosts',
     }
-    host { $::app_name:
+    host { $::fqdn:
       ensure       => 'present',
-      host_aliases => [$::fqdn],
+      host_aliases => [$::app_name],
       ip           => '127.0.0.1',
       target       => '/etc/hosts',
     }
