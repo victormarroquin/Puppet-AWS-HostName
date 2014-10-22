@@ -35,7 +35,7 @@ class hosts {
     }
     host { $::fqdn:
       ensure       => 'present',
-      host_aliases => [$::app_name],
+      host_aliases => [$::custom_hostname],
       ip           => '127.0.0.1',
       target       => '/etc/hosts',
     }
@@ -44,7 +44,7 @@ class hosts {
         owner => root,
         group => root,
         mode => 644,
-        content => "$::app_name\n",
+        content => "$::custom_hostname\n",
         notify => Exec["set-hostname"],
       }
       exec { "set-hostname":
