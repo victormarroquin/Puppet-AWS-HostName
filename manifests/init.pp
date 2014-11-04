@@ -35,10 +35,17 @@ class hosts {
     }
     host { $::fqdn:
       ensure       => 'present',
-      host_aliases => [$::custom_hostname,'localhost'],
+      host_aliases => $::custom_hostname,
+      ip           => $::ipaddress,
+      target       => '/etc/hosts',
+    }
+    
+    host { 'localhost':
+      ensure       => 'present',
       ip           => '127.0.0.1',
       target       => '/etc/hosts',
     }
+    
     file { "/etc/hostname":
         ensure => present,
         owner => root,
