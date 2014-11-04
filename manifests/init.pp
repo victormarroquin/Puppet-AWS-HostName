@@ -35,7 +35,7 @@ class hosts {
     }
     host { $::fqdn:
       ensure       => 'present',
-      host_aliases => [$::custom_hostname],
+      host_aliases => [$::custom_hostname,'localhost'],
       ip           => '127.0.0.1',
       target       => '/etc/hosts',
     }
