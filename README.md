@@ -10,9 +10,10 @@ This class needs a facter varible named "custom_hostname".
 ##Steps:
 
 1. Clone repo into your Puppet "module" folder name "hosts".
-
-# git clone git@github.com:victormarroquin/Puppet-HostName.git /etc/puppet/modules/hosts
-
+```bash
+#   git clone git@github.com:victormarroquin/Puppet-HostName.git /etc/puppet/modules/hosts
+```
 2. Include "hosts" class in your main manifest.
 ```bash
-#    Example: include hosts
+#   Example: include hosts
+```
