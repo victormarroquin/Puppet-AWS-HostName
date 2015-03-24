@@ -3,7 +3,7 @@ Puppet-HostName
 
 This module sets the hostname on your AWS ec2 instance.
 
-##Requiremets:
+##Requirements:
 
 This class needs a facter varible named "custom_hostname".
 
