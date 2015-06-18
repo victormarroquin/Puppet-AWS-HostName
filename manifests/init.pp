@@ -38,6 +38,7 @@ class hosts {
       host_aliases => $::custom_hostname,
       ip           => $::ipaddress_eth0,
       target       => '/etc/hosts',
+      require	   => Exec["set-hostname"],
     }
     
     host { 'localhost':
@@ -46,16 +47,8 @@ class hosts {
       target       => '/etc/hosts',
     }
     
-    file { "/etc/hostname":
-        ensure => present,
-        owner => root,
-        group => root,
-        mode => 644,
-        content => "$::custom_hostname\n",
-        notify => Exec["set-hostname"],
-      }
-      exec { "set-hostname":
-        command => "/bin/hostname -F /etc/hostname",
-        unless => "/usr/bin/test `hostname` = `/bin/cat /etc/hostname`",
-      }
+    exec { "set-hostname":
+      command => "sudo hostnamectl set-hostname $::custom_hostname",
+      unless => "/usr/bin/test `hostname` = `/bin/cat /etc/hostname`",
+    }
 }
