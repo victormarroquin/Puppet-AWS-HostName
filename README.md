@@ -1,11 +1,25 @@
 Puppet-HostName
 ===============
 
-This module sets the hostname on your AWS ec2 instance.
+This module sets a custom hostname on your AWS ec2 instance.
+
+Tested on ubuntu Instances with 12.04 & 14.04 Versions.
 
 ##Requirements:
 
-This class needs a facter varible named "custom_hostname".
+This class needs 2 facter varibles:
+
+1. "custom_hostname" (string) - mandatory
+
+Example:
+
+custom_hostname=my_host
+
+2. "hosts_array" (json) - optional
+
+Example:
+
+hosts_array={"host1" : { "ip" : "127.0.0.1" }, "host2" : { "ip" : "127.0.0.2"}}
 
 ##Steps:
 
