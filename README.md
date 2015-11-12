@@ -21,6 +21,10 @@ Example:
 
 hosts_array={"host1" : { "ip" : "127.0.0.1" }, "host2" : { "ip" : "127.0.0.2"}}
 
+NOTE: On Cloudformation template if you are using "user data" to creates the facter variables to preserve the double coutes you need to declare in the followinf format:
+
+"echo hosts_array={\\\"host1\\\" : { \\\"ip\\\" : \\\"127.0.0.1\\\" }, \\\"host2\\\" : { \\\"ip\\\" : \\\"127.0.0.2\\\"}} >> /path/to/facter/file/\n",
+
 ##Steps:
 
 1. Clone repo into your Puppet "module" folder named "hosts".

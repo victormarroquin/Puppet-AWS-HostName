@@ -64,7 +64,8 @@ class hosts ($hosts_array = $::hosts::params::hosts_array,) inherits hosts::para
   }
 
   exec { "set-hostname":
+    path    => ["/sbin/", "/usr/sbin/", "/usr/bin/", "/bin/"],
     command => "sudo hostnamectl set-hostname $::custom_hostname",
-    unless => "/usr/bin/test `hostname` = `/bin/cat /etc/hostname`",
+    unless  => "/usr/bin/test `hostname` = `/bin/cat /etc/hostname`",
   }
 }
