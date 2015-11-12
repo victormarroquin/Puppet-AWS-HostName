@@ -11,12 +11,14 @@ class hosts ($hosts_array = $::hosts::params::hosts_array,) inherits hosts::para
   $hashDefaults = {
   }
 
-  create_resources(addhosts, parsejson($hosts_array), $hashDefaults)
+  if $hosts_array!=undef {
+    create_resources(addhosts, parsejson($hosts_array), $hashDefaults)
+  }
 
   resources {'host' :
     purge => true,
   }
-  
+
   host { 'ip6-allhosts':
     ensure => 'present',
     ip     => 'ff02::3',
